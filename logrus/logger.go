@@ -3,9 +3,9 @@ Package goalogrus contains an adapter that makes it possible to configure goa so
 as logger backend.
 Usage:
 
-    logger := goalogrus.New()
+    logger := logrus.New()
     // Initialize logger handler using logrus package
-    goa.Log = logger
+    goa.Log = goalogrus.New(logger)
     // ... Proceed with configuring and starting the goa service
 */
 package goalogrus
