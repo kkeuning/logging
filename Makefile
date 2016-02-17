@@ -22,6 +22,7 @@ DEPEND=\
 	github.com/onsi/gomega \
 	github.com/spf13/hugo \
 	golang.org/x/tools/cmd/cover \
+	golang.org/x/tools/cmd/goimports \
 	gopkg.in/yaml.v2
 
 all: depend lint cyclo test
