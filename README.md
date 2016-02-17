@@ -1,6 +1,8 @@
 # Logging Adapters
 
-This repository contains a set of log adapters for use by goa. They make it possible to have goa
+[![Build Status](https://travis-ci.org/goadesign/goa.svg?branch=master)](https://travis-ci.org/goadesign/goa)
+
+This repository contains a set of log adapters for use by [goa](http://goa.design). They make it possible to have goa
 log informational and error messages to various logger backends. Each adapter exists in its own
 package named after the corresponding logger package.
 
