@@ -1,4 +1,4 @@
-package log15_test
+package goalog15_test
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -9,5 +9,5 @@ import (
 
 func TestLog15(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Log15 Suite")
+	RunSpecs(t, "Goalog15 Suite")
 }

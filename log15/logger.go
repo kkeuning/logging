@@ -1,13 +1,13 @@
 /*
- * Package goalog15 contains an adapter that makes it possible to configure goa so it uses log15
- * as logger backend.
- * Usage:
- *
- *     logger := goalog15.New()
- *     // Initialize logger handler using log15 package
- *     goa.Log = logger
- *     // ... Proceed with configuring and starting the goa service
- */
+Package goalog15 contains an adapter that makes it possible to configure goa so it uses log15
+as logger backend.
+Usage:
+
+    logger := goalog15.New()
+    // Initialize logger handler using log15 package
+    goa.Log = logger
+    // ... Proceed with configuring and starting the goa service
+*/
 package goalog15
 
 import (

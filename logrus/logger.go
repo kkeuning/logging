@@ -1,13 +1,13 @@
 /*
- * Package goalogrus contains an adapter that makes it possible to configure goa so it uses logrus
- * as logger backend.
- * Usage:
- *
- *     logger := goalogrus.New()
- *     // Initialize logger handler using logrus package
- *     goa.Log = logger
- *     // ... Proceed with configuring and starting the goa service
- */
+Package goalogrus contains an adapter that makes it possible to configure goa so it uses logrus
+as logger backend.
+Usage:
+
+    logger := goalogrus.New()
+    // Initialize logger handler using logrus package
+    goa.Log = logger
+    // ... Proceed with configuring and starting the goa service
+*/
 package goalogrus
 
 import (

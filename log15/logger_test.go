@@ -1,6 +1,8 @@
 package goalog15_test
 
 import (
+	"github.com/goadesign/goa"
+	"github.com/goadesign/logging/log15"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"gopkg.in/inconshreveable/log15.v2"
@@ -17,7 +19,7 @@ func (h *TestHandler) Log(r *log15.Record) error {
 
 var _ = Describe("goalog15", func() {
 	var logger log15.Logger
-	var adapter goalog15.Logger
+	var adapter goa.Logger
 	var handler *TestHandler
 	const msg = "msg"
 
