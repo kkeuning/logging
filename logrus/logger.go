@@ -5,15 +5,16 @@ Usage:
 
     logger := logrus.New()
     // Initialize logger handler using logrus package
-    goa.Log = goalogrus.New(logger)
+    service.UseLogger(goalogrus.New(logger))
     // ... Proceed with configuring and starting the goa service
 */
 package goalogrus
 
 import (
+	"fmt"
+
 	"github.com/Sirupsen/logrus"
 	"github.com/goadesign/goa"
-	"golang.org/x/net/context"
 )
 
 // Logger is the logrus goa adapter logger.
@@ -26,20 +27,26 @@ func New(logger *logrus.Logger) goa.Logger {
 	return &Logger{Logger: logger}
 }
 
-// Info logs informational messages using logrus.
-func (l *Logger) Info(ctx context.Context, msg string, data ...goa.KV) {
+// Info logs messages using logrus.
+func (l *Logger) Info(msg string, data ...interface{}) {
 	l.Logger.WithFields(data2rus(data)).Info(msg)
 }
 
-// Error logs error messages using logrus.
-func (l *Logger) Error(ctx context.Context, msg string, data ...goa.KV) {
+// Error logs errors using logrus.
+func (l *Logger) Error(msg string, data ...interface{}) {
 	l.Logger.WithFields(data2rus(data)).Error(msg)
 }
 
-func data2rus(data []goa.KV) logrus.Fields {
-	res := make(logrus.Fields, len(data))
-	for _, d := range data {
-		res[d.Key] = d.Value
+func data2rus(keyvals []interface{}) logrus.Fields {
+	n := (len(keyvals) + 1) / 2
+	res := make(logrus.Fields, n)
+	for i := 0; i < len(keyvals); i += 2 {
+		k := keyvals[i]
+		var v interface{} = goa.ErrMissingLogValue
+		if i+1 < len(keyvals) {
+			v = keyvals[i+1]
+		}
+		res[fmt.Sprintf("%v", k)] = v
 	}
 	return res
 }

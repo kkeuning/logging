@@ -31,7 +31,7 @@ var _ = Describe("goalog15", func() {
 
 	JustBeforeEach(func() {
 		adapter = goalog15.New(logger)
-		adapter.Info(nil, msg)
+		adapter.Info(msg)
 	})
 
 	It("adapts info messages", func() {

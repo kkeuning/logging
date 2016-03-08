@@ -12,7 +12,6 @@ package goalog15
 
 import (
 	"github.com/goadesign/goa"
-	"golang.org/x/net/context"
 	"gopkg.in/inconshreveable/log15.v2"
 )
 
@@ -27,20 +26,11 @@ func New(logger log15.Logger) goa.Logger {
 }
 
 // Info logs informational messages using log15.
-func (l *Logger) Info(ctx context.Context, msg string, data ...goa.KV) {
-	l.Logger.Info(msg, data215(data)...)
+func (l *Logger) Info(msg string, data ...interface{}) {
+	l.Logger.Info(msg, data...)
 }
 
 // Error logs error messages using log15.
-func (l *Logger) Error(ctx context.Context, msg string, data ...goa.KV) {
-	l.Logger.Error(msg, data215(data)...)
-}
-
-func data215(data []goa.KV) []interface{} {
-	res := make([]interface{}, 2*len(data))
-	for i, d := range data {
-		res[i*2] = d.Key
-		res[i*2+1] = d.Value
-	}
-	return res
+func (l *Logger) Error(msg string, data ...interface{}) {
+	l.Logger.Error(msg, data...)
 }
